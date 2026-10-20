@@ -1,30 +1,24 @@
+/* Ejercicio 1 — Ticket de un producto
+Contenidos: variables, operadores,
+template strings
+ */
 /* Variables */
 const producto = "Monitor";
-const precio = 189; // precio por unidad, sin IVA
-const cantidad = 2;
+const precio = 19.90; // precio por unidad, sin IVA
+const cantidad = 3;
 const porcentajeIva = 21;
 
 /* Procedimiento */
 /* 1. Calcular el subtotal (precio × cantidad) */
-function subtotal(precio_, cantidad_) {
-    return (precio_ * cantidad_);
-}
+let subtotal = precio * cantidad;
 
 /* 2. Calcular el IVA sobre el subtotal y el total (subtotal + IVA) */
-function CalculoIva() {
-    return (subtotal(precio, cantidad) * (porcentajeIva / 100));
-}
+let calculoIva = subtotal * (porcentajeIva / 100);
 
 /* Mostrar todos los importes con 2 decimales usando .toFixed(2) */
-function ImprimirTicked() {
-    let subtotal_ = subtotal(precio, cantidad).toFixed(2);
-    let IVA_ = CalculoIva().toFixed(2);
-    console.log("*******Ticked********");
-    console.log(`Producti: ${producto}`);
-    console.log(`${cantidad} x ${precio.toFixed(2)}`);
-    console.log(`Subtotal: ${subtotal_}`);
-    console.log(`IVA (21%): ${IVA_}`);
-    console.log(`Total: ${(Number(subtotal_) + Number(IVA_)).toFixed(2)}`);
-}
-/* Ejecucion */
-ImprimirTicked();
+console.log("*******Ticked********");
+console.log(`Producti: ${producto}`);
+console.log(`${cantidad} x ${precio.toFixed(2)}`);
+console.log(`Subtotal: ${subtotal.toFixed(2)}`);
+console.log(`IVA (21%): ${calculoIva.toFixed(2)}`);
+console.log(`Total: ${(subtotal + calculoIva).toFixed(2)}`);
