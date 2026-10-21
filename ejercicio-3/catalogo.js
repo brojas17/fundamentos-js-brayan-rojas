@@ -10,12 +10,18 @@ const stock = [10, 0, 3, 0, 0];
 muestra AGOTADO. */
 let catalogo = [];//producto, precio, stock
 let agotadoContador = 0;
+let posicionMoreExpensive = 0;
+let moreExpensive = 0;
 for (let i = 0; i < productos.length; i++) {
     let disponibilidad = stock[i] === 0 ? "AGOTADO" : `${stock[i]} uds`;
     catalogo.push([productos[i], precios[i], disponibilidad]);
     /* segundo problema */
     if (stock[i] === 0) {
         agotadoContador += 1;
+    }
+    if (precios[i] > moreExpensive) {
+        moreExpensive = precios[i];
+        posicionMoreExpensive = i;
     }
 }
 for (let i = 0; i < catalogo.length; i++) {
@@ -26,3 +32,6 @@ for (let i = 0; i < catalogo.length; i++) {
  */
 console.log("");
 console.log(`Productos Agotados: ${agotadoContador}`);
+
+/* 3. Encontrar el producto más caro y mostrar su nombre y su precio. */
+console.log(`Producto mas caro: ${catalogo[posicionMoreExpensive][0]} (${catalogo[posicionMoreExpensive][1]})`);
