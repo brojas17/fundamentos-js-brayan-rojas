@@ -5,13 +5,16 @@ arrays, búsqueda */
 const productos = ["Teclado", "Ratón", "Monitor", "Auriculares", "Webcam"];
 const precios = [45.99, 19.90, 189.00, 59.95, 34.50];
 const stock = [10, 25, 3, 0, 7];
-let buscarProducto = "auriculares";
+let varbuscarProducto = "webcam";
 let indexProducto = -1;
-
-for (let i = 0; i < productos.length; i++) {
-    if (productos[i].toLowerCase() === buscarProducto.toLowerCase()) {
-        indexProducto = i;
-        break;
+function buscarProducto(productos, varbuscarProducto) {
+    for (let i = 0; i < productos.length; i++) {
+        if (productos[i].toLowerCase() === String(varbuscarProducto).toLowerCase()) {
+            indexProducto = i;
+            break;
+        }
     }
+    return indexProducto;
 }
-console.log(`${buscarProducto} esta en la posicion ${indexProducto}. Precio: ${precios[indexProducto]}€. Stock: ${stock[indexProducto]}`);
+indexProducto = buscarProducto(productos, varbuscarProducto);
+console.log(`${varbuscarProducto} esta en la posicion ${indexProducto}. Precio: ${precios[indexProducto]}€. Stock: ${stock[indexProducto]}`);

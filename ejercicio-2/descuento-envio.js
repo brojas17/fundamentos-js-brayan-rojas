@@ -7,24 +7,37 @@ tienda.
  */
 const importe = 50.01;
 
-/* Descuentos */
-let descuento = 0;
-if (importe > 100) {
-    descuento = importe * (10 / 100);
-} else if (importe > 50 && importe <= 100) {
-    descuento = importe * (5 / 100);
-} else {
-    descuento = 0;
-}
-/* Envio */
-let envio = 4.95;
-let importeDsc = importe - descuento;
-if (importeDsc >= 50) {
-    envio = 0;
+const gasto_envio = 4.95;
+
+// Devuelve el descuento según las reglas de la tienda
+function calcularDescuento(importe) {
+    if (importe > 100) {
+        return importe * 0.10;   // Más de 100 €: 10 %
+    } else if (importe > 50) {
+        return importe * 0.05;   // Más de 50 € (hasta 100 €): 5 %
+    } else {
+        return 0;                           // 50 € o menos: sin descuento
+    }
 }
 
-/* Total */
-let total = importeDsc + envio;
-/* Impresion de Resultados */
-console.log("|Importe|Descuento|Importe con descuento|Envio|Total|");
-console.log(`|${importe.toFixed(2)}€|${descuento.toFixed(2)}€|${importeDsc.toFixed(2)}€|${envio.toFixed(2)}€|${total.toFixed(2)}€|`);
+// Recibe el importe YA DESCONTADO.
+function calcularEnvio(importe) {
+    if (importe >= 50) {
+        return 0;              // Gratis
+    } else {
+        return gasto_envio;
+    }
+}
+
+// Cálculos
+const descuento = calcularDescuento(importe);
+const importeConDescuento = importe - descuento;
+const envio = calcularEnvio(importeConDescuento);
+const total = importeConDescuento + envio;
+
+// Mostrar resultados
+console.log("Importe: " + importe.toFixed(2) + " €");
+console.log("Descuento: " + descuento.toFixed(2) + " €");
+console.log("Importe con descuento: " + importeConDescuento.toFixed(2) + " €");
+console.log("Envío: " + (envio === 0 ? "Gratis" : envio.toFixed(2) + " €"));
+console.log("Total: " + total.toFixed(2) + " €");

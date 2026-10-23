@@ -10,15 +10,21 @@ const porcentajeIva = 21;
 
 /* Procedimiento */
 /* 1. Calcular el subtotal (precio × cantidad) */
-let subtotal = precio * cantidad;
-
+function calcularImporteLinea(precio, cantidad) {
+    return precio * cantidad;
+}
 /* 2. Calcular el IVA sobre el subtotal y el total (subtotal + IVA) */
-let calculoIva = subtotal * (porcentajeIva / 100);
-
+function calcularIVA(importe_) {
+    return importe_ * (porcentajeIva / 100);
+}
 /* Mostrar todos los importes con 2 decimales usando .toFixed(2) */
+let importe_ = calcularImporteLinea(precio, cantidad);
+let calcularIVA_ = calcularIVA(importe_);
+
 console.log("*******Ticked********");
 console.log(`Producti: ${producto}`);
-console.log(`${cantidad} x ${precio.toFixed(2)}`);
-console.log(`Subtotal: ${subtotal.toFixed(2)}`);
-console.log(`IVA (21%): ${calculoIva.toFixed(2)}`);
-console.log(`Total: ${(subtotal + calculoIva).toFixed(2)}`);
+console.log(`${cantidad} x ${precio.toFixed(2)} €`);
+console.log(`Subtotal: ${importe_.toFixed(2)} €`);
+console.log(`IVA (21%): ${calcularIVA_.toFixed(2)} €`);
+console.log(`Total: ${(importe_ + calcularIVA_).toFixed(2)} €`);
+
