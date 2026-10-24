@@ -31,8 +31,8 @@ console.log("");
 console.log(`Productos agotados: ${contarAgotados(stock)}`);
 
 // 3. Producto mas caro (patron maximo: guardamos la posicion)
-let posMax = 0;
 function productoMasCaro(productos, precios) {
+    let posMax = 0;
     for (let i = 1; i < precios.length; i++) {
         if (precios[i] > precios[posMax]) {
             posMax = i;
@@ -40,8 +40,8 @@ function productoMasCaro(productos, precios) {
     }
     return posMax;
 }
-posMax = productoMasCaro(productos, precios);
-console.log(`Producto mas caro: ${productos[posMax]} (${precios[posMax].toFixed(2)} €)`);
+let rslt = productoMasCaro(productos, precios);
+console.log(`Producto mas caro: ${productos[rslt]} (${precios[rslt].toFixed(2)} €)`);
 
 // 4. Valor total del inventario (patron acumulador)
 function valorInventario(precios, stock) {
