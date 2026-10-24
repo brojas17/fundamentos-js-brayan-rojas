@@ -8,6 +8,7 @@ const stock = [10, 25, 3, 0, 7];
 let varbuscarProducto = "webcam";
 let indexProducto = -1;
 function buscarProducto(productos, varbuscarProducto) {
+    indexProducto = -1;
     for (let i = 0; i < productos.length; i++) {
         if (productos[i].toLowerCase() === String(varbuscarProducto).toLowerCase()) {
             indexProducto = i;
